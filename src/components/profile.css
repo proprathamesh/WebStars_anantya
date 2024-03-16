@@ -1,0 +1,118 @@
+.profile-pic {
+    width: 200px;
+    border-radius: 50%;
+    /* display: block; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-premium-blue {
+    background-color: #0077B6; 
+    color: #ffffff; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-premium-blue:hover {
+    background-color: #005691; 
+}
+
+.nav-option ul li {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #0077B6; 
+    font-weight: bold;
+}
+
+.nav-option ul li:hover {
+    background-color: #E5E5E5; 
+}
+
+.content {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    max-height: 500px; 
+    overflow-y: auto; 
+    border-radius: 8px;
+    border: 1px solid #0077B6; 
+    padding: 20px;
+    background-color: #F3F3F3; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content.hidden {
+    opacity: 0;
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #0077B6; 
+    margin-bottom: 1rem;
+}
+
+p {
+    color: #333333; 
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.content {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.content p {
+    margin-bottom: 10px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #F3F3F3; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logout {
+    background-color: rgb(174, 73, 73);
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+    .nav-option {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-option ul li {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .nav-option ul li:last-child {
+        margin-bottom: 0;
+    }
+    .content {
+        padding: 10px;
+    }
+}
