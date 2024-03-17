@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table } from 'antd';
+import axios from 'axios';
 
-const RecordsShow = ({ records }) => {
+const RecordsShow = () => {
+  const [records, setColumns] = useState([])
+
   const columns = [
     {
       title: 'Date of Visit',
@@ -28,7 +31,30 @@ const RecordsShow = ({ records }) => {
       dataIndex: 'otherInfo',
       key: 'otherInfo',
     },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+    },
   ];
+
+  useEffect(() => {
+      try {
+        // Send a POST request to your API endpoint with the form data
+        axios.get('http://localhost:3000/api/medical-records/')
+        
+          .then(response => {
+            console.log(response.data)
+            setColumns(response.data.filter(user => user.patientId === localStorage.getItem('userId')))
+          }).
+
+        console.log('Form submission successful:', response.data);
+        // Handle success, e.g., show a success message or redirect the user
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        // Handle error, e.g., show an error message to the user
+      }
+  }, [])
 
   return (
     <div className="bg-gray-100 py-8">

@@ -1,13 +1,23 @@
-import React from 'react';
-import { Button, Layout } from 'antd';
+import React, {useEffect} from 'react';
+import { Layout } from 'antd';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import RecordsShow from '../components/RecordsShow';
-import { Link } from "react-router-dom";
+import RecordForm from '../components/RecordForm';
+import { useNavigate } from 'react-router-dom';
 
 const { Content, Footer } = Layout;
 
-const MedicalRecords = () => {
+const MedicalRecordsForm = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+  
+    if (!userId) {
+      navigate('/auth/');
+    }
+  }, []);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -16,8 +26,7 @@ const MedicalRecords = () => {
         <Sidebar />
         <Layout>
           <Content className="p-4">
-            <Button type="primary" className='bg-[blue] mx-10 mt-5'><Link to="/recordfill">Add Record</Link></Button>
-            <RecordsShow />
+            <RecordForm />
           </Content>
           <Footer className="text-center bg-gray-200 p-4">Footer</Footer>
         </Layout>
@@ -26,4 +35,4 @@ const MedicalRecords = () => {
   );
 }
 
-export default MedicalRecords;
+export default MedicalRecordsForm;

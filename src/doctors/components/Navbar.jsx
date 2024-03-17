@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <div>
       <Header className="bg-[#2a7fba] shadow-md flex justify-between items-center p-4 sm:px-14 text-white">
-        <div className="text-xl font-bold">Your App Name</div>
+        <div className="text-xl font-bold">MedConnect</div>
         <Button className="sm:block hidden text-white" icon={<UserOutlined />}>
           <Link to="/profile">Profile</Link>
         </Button>

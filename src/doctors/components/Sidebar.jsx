@@ -7,11 +7,12 @@ import {
   LaptopOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const { Sider } = Layout;
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [selectedMenuItem, setSelectedMenuItem] = useState("dashboard");
 
@@ -44,28 +45,28 @@ const Sidebar = () => {
           icon={<FileTextOutlined />}
           onClick={() => handleMenuClick("medicalRecords")}
         >
-          <Link to="/records">Medical Records</Link>
+          <Link to="/records">Patients</Link>
         </Menu.Item>
         <Menu.Item
           key="consultation"
           icon={<LaptopOutlined />}
           onClick={() => handleMenuClick("consultation")}
         >
-          <Link to="/consultation">My Consultations</Link>
+          <Link to="/consultation">Consultations</Link>
         </Menu.Item>
-        <Menu.Item
+        {/* <Menu.Item
           key="message"
           icon={<MessageOutlined />}
           onClick={() => handleMenuClick("message")}
         >
           <Link to="/message">Message</Link>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item
           key="logout"
           icon={<LogoutOutlined />}
-          onClick={() => handleMenuClick("logout")}
+          onClick={() => {localStorage.removeItem('userId');navigate('/auth');}}
         >
-          <Link to="/logout">Logout</Link>
+          Logout
         </Menu.Item>
       </Menu>
     </Sider>

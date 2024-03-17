@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Layout } from 'antd';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import RecordForm from '../components/RecordForm';
+import { useNavigate } from 'react-router-dom';
 
 const { Content, Footer } = Layout;
 
 const MedicalRecordsForm = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+  
+    if (!userId) {
+      navigate('/auth/');
+    }
+  }, []);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>

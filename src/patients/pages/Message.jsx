@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Layout, Breadcrumb, Card, Button } from 'antd';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import Profile from '../components/Profile';
+import MessageShow from '../components/MessageShow';
+import { useNavigate } from 'react-router-dom';
 
 const { Content, Footer } = Layout;
 
-const ProfilePage = () => {
+const Message = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+  
+    if (!userId) {
+      navigate('/auth/');
+    }
+  }, []);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -15,7 +26,7 @@ const ProfilePage = () => {
         <Sidebar />
         <Layout>
           <Content className="p-4">
-            <Profile />
+            <MessageShow />
           </Content>
           <Footer className="text-center bg-gray-200 p-4">Footer</Footer>
         </Layout>
@@ -24,4 +35,4 @@ const ProfilePage = () => {
   );
 }
 
-export default ProfilePage;
+export default Message;

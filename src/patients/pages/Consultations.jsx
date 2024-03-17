@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Layout, Breadcrumb, Card, Button } from 'antd';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import ConsultationShow from '../components/ConsultationShow';
+import { useNavigate } from 'react-router-dom';
 
 const { Content, Footer } = Layout;
 
 const Consultations = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+  
+    if (!userId) {
+      navigate('/auth/');
+    }
+  }, []);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>

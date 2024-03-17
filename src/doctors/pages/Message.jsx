@@ -3,10 +3,21 @@ import { Layout, Breadcrumb, Card, Button } from 'antd';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import MessageShow from '../components/MessageShow';
+import { useNavigate } from 'react-router-dom';
 
 const { Content, Footer } = Layout;
 
 const Message = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+  
+    if (!userId) {
+      navigate('/auth/');
+    }
+  }, []);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
